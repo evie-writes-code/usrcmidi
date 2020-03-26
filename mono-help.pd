@@ -1,0 +1,39 @@
+#N canvas 523 23 856 492 10;
+#X obj 66 29 mono;
+#X text 99 29 - MIDI-STYLE MONOPHONIC PITCH TRACKER;
+#X msg 42 190 60 127;
+#X text 90 190 note on \, pitch = 60 \, velocity = 127;
+#X text 110 210 note off \, pitch = 60 \, velocity = 0;
+#X msg 62 210 60 0;
+#X msg 82 250 60 127;
+#X text 130 250 note on \, pitch = 60 \, velocity = 127;
+#X msg 102 270 62 127;
+#X text 171 289 note off \, pitch = 62 \, velocity = 0;
+#X msg 122 290 62 0;
+#X msg 142 310 60 0;
+#X text 191 309 note off \, pitch = 60 \, velocity = 0;
+#X obj 42 361 mono;
+#X text 339 190 CASE 1: single note on/off;
+#X text 351 204 passes through unchanged;
+#X text 431 274 the first note is kept in memory \, waiting for the
+second to be released. When the second is released \, the first is
+given again. When the final note is released \, note-off is sent.;
+#X text 151 269 note on \, pitch = 62 \, velocity = 127;
+#X text 419 260 CASE 2: one note is held while a second goes on/off
+;
+#X text 34 54 Imitates a common behaviour of monophonic keyboard synthesisers.
+Keeps an internal stack of notes \, outputting the current top note
+(pitch \, velocity) on the stack whenever input is recieved. Note-on
+will add a note to the top of the stack \, note-off will remove all
+instances of that note from the stack. If no notes are left on the
+stack \, a note-off message is sent with the pitch of the last note
+to be removed. Allows for fast \, trilling passages to be played on
+lead-style synth instruments.;
+#X obj 42 382 print;
+#X connect 2 0 13 0;
+#X connect 5 0 13 0;
+#X connect 6 0 13 0;
+#X connect 8 0 13 0;
+#X connect 10 0 13 0;
+#X connect 11 0 13 0;
+#X connect 13 0 20 0;
