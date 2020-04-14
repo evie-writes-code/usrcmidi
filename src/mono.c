@@ -132,5 +132,4 @@ void mono_setup(void) {
 		A_DEFFLOAT, 0);
 
 	class_addlist(mono_class, mono_midiIn);
-	class_sethelpsymbol(mono_class, gensym("mono-help"));
 }
