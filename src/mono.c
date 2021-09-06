@@ -128,8 +128,7 @@ void mono_setup(void) {
 	mono_class = class_new(gensym("mono"),
 		(t_newmethod)mono_new,
 		(t_method)mono_free, sizeof(t_mono),
-		CLASS_DEFAULT,
-		A_DEFFLOAT, 0);
+		CLASS_DEFAULT, 0);
 
 	class_addlist(mono_class, mono_midiIn);
 }
